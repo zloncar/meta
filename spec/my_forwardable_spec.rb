@@ -10,7 +10,6 @@ describe MyForwardable do
   end
 
   it 'delegates methods with a different name' do
-    pending
     expect( collection.record_number(2) ).to eq(records[2])
   end
 
@@ -28,7 +27,7 @@ describe MyForwardable do
     attr_reader :records
 
     def_delegator  :records, :size
-#   def_delegator  :records, :[], :record_number
+    def_delegator  :records, :[], :record_number
 
 #   def_delegators :records, :<<, :map
 

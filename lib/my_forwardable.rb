@@ -16,10 +16,10 @@ module MyForwardable
 # end
 
 
-  def def_delegator(accessor, method)
+  def def_delegator(accessor, method, ali=method)
     p accessor
     p method
-    define_method(method) { send(accessor).send(method) }
+    define_method(ali) { |*args| send(accessor).send(method, *args) }
   end
 
 end
