@@ -14,7 +14,6 @@ describe MyForwardable do
   end
 
   it 'delegates multiple methods' do
-    pending
     collection << 'new order'
     result = collection.map(&:upcase)
 
@@ -29,7 +28,7 @@ describe MyForwardable do
     def_delegator  :records, :size
     def_delegator  :records, :[], :record_number
 
-#   def_delegators :records, :<<, :map
+    def_delegators :records, :<<, :map
 
     def initialize(records)
       @records = records
