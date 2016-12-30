@@ -1,3 +1,5 @@
+require_relative './data_source.rb'
+
 class Computer
   def initialize(computer_id, data_source)
     @computer_id = computer_id
