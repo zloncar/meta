@@ -6,17 +6,14 @@ class Computer
     @data_source = data_source
   end
 
-  def cpu
-    component :cpu
+  def self.define_component(name)
+    define_method(name) {
+      info = @data_source.send "get_#{name}_info", @computer_id
+      price = @data_source.send "get_#{name}_price", @computer_id
+      "#{name.to_s.capitalize}: #{info} (#{price})"
+    }
   end
 
-  def screen
-    component :screen
-  end
-
-  def component(name)
-    info = @data_source.send "get_#{name}_info", @computer_id
-    price = @data_source.send "get_#{name}_price", @computer_id
-    "#{name.to_s.capitalize}: #{info} (#{price})"
-  end
+  define_component :cpu
+  define_component :screen
 end
